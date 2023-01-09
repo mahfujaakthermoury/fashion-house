@@ -1,2 +1,0 @@
-<x-header/>
-<x-footer/>

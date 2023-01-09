@@ -16,8 +16,10 @@ use App\Http\Controllers\BaseController;
 
 Route::get('/', [BaseController::class, 'Home']);
 
-Route::get('/edit', [BaseController::class, 'Edit']);
+Route::get('/customer/edit/{customer_id}', [BaseController::class, 'Edit']);
+Route::post('/customer/edit/{customer_id}', [BaseController::class, 'update']);
 
 Route::get('/customer/create', [BaseController::class, 'Add']);
 Route::post('/customer/create', [BaseController::class, 'Create']);
+
  

@@ -13,9 +13,28 @@ class BaseController extends Controller
         return view('home',$data);
     }
 
-        //Edit page
-    public function Edit(){
-        return view('edit');
+        //Customer Edit page
+    public function Edit($customer_id){
+        $customer = Customer::where('id', $customer_id)->first();
+        $data['customer'] = $customer;
+        return view('customer_edit', $data);
+    }
+
+    //Customer update
+    public function Update(Request $request,$customer_id){
+        $name = $request->input('customer_name');
+        $email = $request->input('customer_email');
+        $phone = $request->input('customer_phone');
+
+        $attr = [
+            'name'=>$name,
+            'email'=>$email,
+            'phone'=>$phone
+        ];
+
+        Customer::where('id', $customer_id)->update($attr);
+        return redirect('/');
+
     }
 
     //function customer create
