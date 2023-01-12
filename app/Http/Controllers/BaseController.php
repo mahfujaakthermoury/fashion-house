@@ -32,7 +32,13 @@ class BaseController extends Controller
             'phone'=>$phone
         ];
 
-        Customer::where('id', $customer_id)->update($attr);
+        
+        if(Customer::where('id', $customer_id)->update($attr)){
+            $request->session()->flash('msg_success', 'Customer update successfully.');
+        }else{
+            $request->session()->flash('msg_error', 'Customer update faield');
+        }
+        
         return redirect('/');
 
     }
@@ -55,8 +61,24 @@ class BaseController extends Controller
             'phone'=>$phone
         ];
 
-        Customer::insert($attr);
+        if(Customer::insert($attr)){
+            $request->session()->flash('msg_success', 'Customer created successfully.');
+        }else{
+            $request->session()->flash('msg_error', 'Customer created faield');
+        }
+
         return redirect('/');
 
-    } 
+    }
+    
+    //Delete method
+    public function Delete(Request $request, $customer_id){
+
+        if(Customer::where('id', $customer_id)->delete()){
+            $request->session()->flash('msg_success', 'Customer deleted successfully.');
+        }else{
+            $request->session()->flash('msg_error', 'Customer deletion faield');
+        }
+        return redirect('/');
+    }
 }

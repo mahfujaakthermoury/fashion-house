@@ -22,4 +22,6 @@ Route::post('/customer/edit/{customer_id}', [BaseController::class, 'update']);
 Route::get('/customer/create', [BaseController::class, 'Add']);
 Route::post('/customer/create', [BaseController::class, 'Create']);
 
+Route::get('/customer/delete/{customer_id}', [BaseController::class, 'Delete']);
+
  

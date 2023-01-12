@@ -3,6 +3,11 @@
 <section class="main_section py-5">
     <div class="container">
         <div class="row">
+            <div class="col-sm-12">
+                <x-AlertMessage/>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-12 py-5">
                 <h3>Customer List
                     <a href="{{url('/customer/create')}}" class="btn btn-success btn-sm float-end">Add Customer</a>
